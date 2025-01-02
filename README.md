@@ -8,7 +8,8 @@ The News Explorer application provides users with the ability to search for all 
 
 ## Deployment
 
-NOTE: This link won't work until I complete Stage 3: Authorization with React:
+NOTE: This link won't work until I complete Stage 3: Authorization with React
+
 To view this final project click the [link here.](https://news-explorer.h0stname.net/)
 
 ## Tech Stack

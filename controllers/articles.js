@@ -1,10 +1,14 @@
 const mongoose = require("mongoose");
 const Article = require("../models/article");
-const { BadRequestError, NotFoundError, ForbiddenError } = require("../utils/errors");
+const {
+  BadRequestError,
+  NotFoundError,
+  ForbiddenError,
+} = require("../utils/errors");
 
 // GET /articles
 const getSavedArticles = (req, res, next) => {
-  Article.find({})
+  Article.find({ owner: req.user._id })
     .then((article) => res.status(200).send(article))
     .catch(next);
 };
@@ -35,10 +39,13 @@ const unsaveArticle = (req, res, next) => {
   }
 
   return Article.findById(articleId)
+    .select("owner")
     .orFail(() => new NotFoundError("Article not found"))
     .then((article) => {
       if (article.owner.toString() !== userId) {
-        throw new ForbiddenError("You are not authorized to unsave this article");
+        throw new ForbiddenError(
+          "You are not authorized to unsave this article"
+        );
       }
 
       return Article.findByIdAndDelete(articleId).then(() =>

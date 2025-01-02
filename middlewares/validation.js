@@ -38,3 +38,31 @@ module.exports.validateId = celebrate({
     }),
   }),
 });
+
+module.exports.validateArticleBody = celebrate({
+  body: Joi.object().keys({
+    keyword: Joi.string().required().messages({
+      "string.empty": 'The "keyword" field must be filled in',
+    }),
+    title: Joi.string().required().messages({
+      "string.empty": 'The "title" field must be filled in',
+    }),
+    text: Joi.string().required().messages({
+      "string.empty": 'The "text" field must be filled in',
+    }),
+    date: Joi.string().required().messages({
+      "string.empty": 'The "date" field must be filled in',
+    }),
+    source: Joi.string().required().messages({
+      "string.empty": 'The "source" field must be filled in',
+    }),
+    link: Joi.string().required().uri().messages({
+      "string.uri": 'The "link" field must be a valid URL',
+      "string.empty": 'The "link" field must be filled in',
+    }),
+    image: Joi.string().required().uri().messages({
+      "string.uri": 'The "image" field must be a valid URL',
+      "string.empty": 'The "image" field must be filled in',
+    }),
+  }),
+});

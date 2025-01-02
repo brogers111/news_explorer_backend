@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const { errors } = require("celebrate");
-// const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 const mainRouter = require("./routes/index");
 const errorHandler = require("./middlewares/errorHandler");
 const { requestLogger, errorLogger } = require("./middlewares/logger");
@@ -11,12 +11,12 @@ const limiter = require("./utils/limiterConfig");
 const app = express();
 const { PORT = 3000 } = process.env;
 
-// mongoose
-//   .connect("mongodb://127.0.0.1:27017/news_db")
-//   .then(() => {
-//     console.log("Connected to DB");
-//   })
-//   .catch(console.error);
+mongoose
+  .connect("mongodb://127.0.0.1:27017/news_db")
+  .then(() => {
+    console.log("Connected to DB");
+  })
+  .catch(console.error);
 
 app.use(cors());
 app.use(express.json());

@@ -1,10 +1,16 @@
 const errorHandler = (err, req, res, next) => {
-  const statusCode = err.statusCode || 500;
+  if (err.joi) {
+    const errorMessages = err.joi.details
+      .map((detail) => detail.message)
+      .join(", ");
+    return res.status(400).send({
+      message: errorMessages,
+    });
+  }
 
-  console.error(`Error: ${err.message}`, err);
-
-  res.status(statusCode).json({
-    message: err.message || "An unexpected error occurred on the server",
+  const { statusCode = 500, message } = err;
+  return res.status(statusCode).send({
+    message: statusCode === 500 ? "An internal server error occurred" : message,
   });
 };
 

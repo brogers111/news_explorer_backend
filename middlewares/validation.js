@@ -60,9 +60,8 @@ module.exports.validateArticleBody = celebrate({
       "string.uri": 'The "link" field must be a valid URL',
       "string.empty": 'The "link" field must be filled in',
     }),
-    image: Joi.string().required().uri().messages({
+    image: Joi.string().uri().messages({
       "string.uri": 'The "image" field must be a valid URL',
-      "string.empty": 'The "image" field must be filled in',
     }),
   }),
 });

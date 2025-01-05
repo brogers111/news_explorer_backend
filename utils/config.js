@@ -1,7 +1,7 @@
 const {
-  PORT = 3001,
+  PORT,
   JWT_SECRET = "your-secret-key",
-  MONGO_URI = "mongodb://127.0.0.1:27017/news_db",
+  MONGO_URI,
   NODE_ENV = "development",
 } = process.env;
 

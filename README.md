@@ -28,7 +28,7 @@ View the Figma for this project [here.](https://www.figma.com/design/3ottwMEhlBt
 
 ## Deployment
 
-To view this final project click the [link here.](https://news-explorer.h0stname.net/)
+To view this final project click the [link here.](https://news-explorer.root.sx/)
 
 ## Link to Frontend Repo
 
